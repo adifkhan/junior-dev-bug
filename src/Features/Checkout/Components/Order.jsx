@@ -9,7 +9,7 @@ const CartProducts = [
   { id: 2, product: "External SSD USB 2.1 150 GB", price: "1" },
 ];
 export default function Order() {
-  const { open, setTotalPrice, totalPrice } = useGlobalCtx();
+  const { open,toggleModal, setTotalPrice, totalPrice } = useGlobalCtx();
   const total = CartProducts.reduce(
     (accumulator, currentValue) =>
       Number(accumulator) + Number(currentValue.price),
@@ -18,6 +18,7 @@ export default function Order() {
   useEffect(() => {
     setTotalPrice(total + 1);
   }, [setTotalPrice, total]);
+
   return (
     <div>
       <div className="border border-border border-opacity-5 rounded-[0.5rem] py-4 px-5">
@@ -34,7 +35,7 @@ export default function Order() {
             </tr>
             {CartProducts.map((product) => (
               <TbRow key={product.id} label={product.product}>
-                ৳ {product.price} TK{" "}
+                ৳ {product.price} TK
               </TbRow>
             ))}
             <TbRow label="Subtotal">
@@ -75,10 +76,10 @@ export default function Order() {
         <div className="flex justify-between py-5">
           <p className="text-black text-base font-normal">Estimated Total</p>
           <p className="font-bold text-xl text-textHeader">
-            ৳ {totalPrice} TK{" "}
+            ৳ {totalPrice} TK
           </p>
         </div>
-        <Btn>Continue to Payment</Btn>
+        <Btn type='submit' onclick={toggleModal}>Continue to Payment</Btn>
         {open ? <PaymentMd /> : ""}
       </div>
     </div>

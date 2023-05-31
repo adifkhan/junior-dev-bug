@@ -1,4 +1,5 @@
 import React from 'react';
+
 /**
  * A dynamic button which can be used all over the site.
  * @param {String} type The type of the button.
@@ -13,7 +14,8 @@ export default function Btn({
   children = 'button',
   disabled = false,
   onClick = () => { },
-}) {
+}) 
+{
   return (
     <button
       onClick={onClick}
