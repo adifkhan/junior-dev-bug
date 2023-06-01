@@ -9,7 +9,7 @@ const CartProducts = [
   { id: 2, product: "External SSD USB 2.1 150 GB", price: "1" },
 ];
 export default function Order() {
-  const { open,toggleModal, setTotalPrice, totalPrice } = useGlobalCtx();
+  const { open, setTotalPrice, totalPrice } = useGlobalCtx();
   const total = CartProducts.reduce(
     (accumulator, currentValue) =>
       Number(accumulator) + Number(currentValue.price),
@@ -79,7 +79,7 @@ export default function Order() {
             ৳ {totalPrice} TK
           </p>
         </div>
-        <Btn type='submit' onclick={toggleModal}>Continue to Payment</Btn>
+        <Btn type='submit'>Continue to Payment</Btn>
         {open ? <PaymentMd /> : ""}
       </div>
     </div>
